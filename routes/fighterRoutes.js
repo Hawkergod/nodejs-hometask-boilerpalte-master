@@ -6,13 +6,11 @@ const { createFighterValid, updateFighterValid } = require('../middlewares/fight
 const router = Router();
 
 // TODO: Implement route controllers for fighter
-// GET '/api/fighters'
-// GET '/api/fighters/:id
-// POST '/api/fighters
-// PUT '/api/fighters /: id
-// DELETE '/api/fighters /: id
 
-router.get('/', FighterService.getAll(), responseMiddleware);
-router.get('/:id', FighterService.getById(), responseMiddleware)
+router.get('/', FighterService.getAll);
+router.get('/:id', FighterService.getFighterById);
+router.post('/', createFighterValid, responseMiddleware, FighterService.createFighter);
+router.put('/:id', updateFighterValid, responseMiddleware, FighterService.updateFighterById);
+router.delete('/:id', FighterService.deleteFighter);
 
 module.exports = router;
